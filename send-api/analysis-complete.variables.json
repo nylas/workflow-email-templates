@@ -1,0 +1,33 @@
+{
+  "first_name": "Nyla",
+  "project_name": "Q4 prospect list",
+  "module_label_lower": "fit analysis",
+  "is_resume": "",
+  "headline": "Q4 prospect list is ready",
+  "summary": "Acme Insights analyzed 46 of 48 companies.",
+  "has_failures": "true",
+  "failed_count": "2",
+  "failed_noun": "companies",
+  "top_results": [
+    {
+      "name": "Hart & Miller Design",
+      "domain": "hartmiller.example.com",
+      "score": "5",
+      "url": "https://insights.example.com/projects/q4-prospects/companies/hart-miller"
+    },
+    {
+      "name": "Okafor Logistics",
+      "domain": "okafor.example.com",
+      "score": "4",
+      "url": "https://insights.example.com/projects/q4-prospects/companies/okafor"
+    },
+    {
+      "name": "Bluebird Clinics",
+      "domain": "bluebird.example.com",
+      "score": "4",
+      "url": "https://insights.example.com/projects/q4-prospects/companies/bluebird"
+    }
+  ],
+  "project_url": "https://insights.example.com/projects/q4-prospects",
+  "app_url": "https://insights.example.com"
+}

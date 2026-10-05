@@ -1,0 +1,18 @@
+{
+  "meetingTitle": "Quarterly planning",
+  "meetingDate": "Wednesday, October 14, 2026",
+  "attendees": [
+    "Nyla Hart",
+    "Leyah Miller",
+    "Sam Okafor"
+  ],
+  "summary": "<p>The team agreed on three Q4 goals: ship the self-serve onboarding flow, cut first-response time in support to under 2 hours, and hire two engineers.</p><p><strong>Roadmap:</strong> onboarding moves ahead of the reporting revamp, which slips to January.</p>",
+  "actionItems": [
+    "<strong>Nyla</strong>: share the onboarding spec by Friday",
+    "<strong>Leyah</strong>: draft the two engineering job posts",
+    "<strong>Sam</strong>: pull last quarter's support response times"
+  ],
+  "recordingUrl": "https://example.com/recordings/8c2e5a7f",
+  "notetakerName": "Acme Notetaker",
+  "notetakerId": "8c2e5a7f-1d4b-4e9a-b3c6-7f2d9e1a5b8c"
+}

@@ -1,0 +1,127 @@
+{{!--
+  subject: Your notetaker couldn't join the meeting
+  trigger: notetaker.meeting_state
+  Replace the logo (nylas-logo.png) with your own, hosted anywhere public.
+--}}
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light only" />
+  <meta name="supported-color-schemes" content="light" />
+  <title>Notetaker status</title>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    body { margin: 0; padding: 0; background-color: #F2F2F4; }
+    @media only screen and (max-width: 700px) {
+      .wrap { width: 100% !important; }
+      .pad { padding-left: 24px !important; padding-right: 24px !important; }
+      .hero-pad { padding: 40px 16px 44px 16px !important; }
+      .hero-wrap { padding: 0 8px !important; }
+      .page-pad { padding: 12px 8px !important; }
+      .wrap { border-radius: 10px !important; }
+      .hero-pad a { white-space: normal !important; }
+      .headline { font-size: 28px !important; line-height: 34px !important; }
+    }
+  </style>
+</head>
+
+<body style="margin: 0; padding: 0; background-color: #F2F2F4;">
+  {{!-- The header color follows status: Terra for failed_entry, Pink for disconnected, Blue otherwise. --}}
+  <div style="display: none; max-height: 0; overflow: hidden; opacity: 0; mso-hide: all;">An update on your Notetaker.</div>
+
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#F2F2F4" style="background-color: #F2F2F4;">
+    <tr>
+      <td class="page-pad" align="center" style="padding: 40px 16px;">
+        <table role="presentation" class="wrap" width="680" cellpadding="0" cellspacing="0" border="0" bgcolor="#FFFFFF" style="width: 680px; max-width: 680px; background-color: #FFFFFF; border-collapse: separate; border-radius: 12px; overflow: hidden; border: 1px solid #E4E4E8;">
+
+          <tr>
+            <td class="pad" style="padding: 32px 48px 28px 48px;">
+              {{!-- Replace with your own logo. --}}
+              <img src="https://developer.nylas.com/_images/email/nylas-logo.png" alt="Nylas" width="96" style="display: block; width: 96px; height: auto; border: 0;" />
+            </td>
+          </tr>
+
+          <tr>
+            <td class="hero-wrap" style="padding: 0 12px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate; border-radius: 8px; overflow: hidden;">
+                <tr>
+            {{#if (eq status "failed_entry")}}<td class="hero-pad" bgcolor="#1F1F1F" style="padding: 52px 36px 56px 36px; border-radius: 8px; background-color: #1F1F1F; background-image: radial-gradient(ellipse 80% 90% at 85% 0%, #DD6B5F 0%, #5E3834 45%, #1F1F1F 78%);">{{else if (eq status "disconnected")}}<td class="hero-pad" bgcolor="#1F1F1F" style="padding: 52px 36px 56px 36px; border-radius: 8px; background-color: #1F1F1F; background-image: radial-gradient(ellipse 80% 90% at 85% 0%, #AE5E93 0%, #4E3445 45%, #1F1F1F 78%);">{{else}}<td class="hero-pad" bgcolor="#1F1F1F" style="padding: 52px 36px 56px 36px; border-radius: 8px; background-color: #1F1F1F; background-image: radial-gradient(ellipse 55% 60% at 100% 100%, #365462 0%, rgba(31, 31, 31, 0) 70%), radial-gradient(ellipse 80% 90% at 85% 0%, #3C5EC4 0%, #293455 45%, #1F1F1F 78%);">{{/if}}
+              <h1 class="headline" style="margin: 0; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 34px; line-height: 40px; font-weight: 500; letter-spacing: -0.5px; color: #FFFFFF; word-break: break-word;">{{#if (eq status "failed_entry")}}Your Notetaker couldn't join{{else if (eq status "disconnected")}}Your Notetaker left the meeting{{else if (eq status "attending")}}Your Notetaker is in the meeting{{else}}Your Notetaker is joining{{/if}}</h1>
+              <div style="margin-top: 20px; font-size: 0; line-height: 0;">{{#if meeting_link}}<a href="{{meeting_link}}" style="display: inline-block; margin: 12px 12px 0 0; padding: 14px 28px; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 500; line-height: 20px; text-decoration: none; border-radius: 999px; white-space: nowrap; background-color: #FFFFFF; color: #080817; border: 1px solid #FFFFFF;">Open the meeting</a>{{/if}}</div>
+            </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="pad" style="padding: 40px 48px 0 48px; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 16px; line-height: 26px; color: #1F1F1F; word-break: break-word;">
+              <p style="margin: 0;">{{#if recipient}}{{#if recipient.first_name}}Hi {{recipient.first_name}},{{else}}Hi,{{/if}}{{else}}Hi,{{/if}}</p>
+              {{#if (eq status "failed_entry")}}
+              <p style="margin: 16px 0 0 0;">The Notetaker couldn't get into your {{#if meeting_provider}}{{meeting_provider}} {{/if}}meeting, so there is no recording or transcript for it.</p>
+              {{#if (eq meeting_state "bad_meeting_link")}}
+              <p style="margin: 16px 0 0 0;">The meeting link didn't work. Check the link on the calendar event and send the Notetaker again.</p>
+              {{else if (eq meeting_state "bad_meeting_code")}}
+              <p style="margin: 16px 0 0 0;">The meeting code didn't work. Check the code on the calendar event and send the Notetaker again.</p>
+              {{else if (eq meeting_state "sign_in_required")}}
+              <p style="margin: 16px 0 0 0;">The meeting only admits signed-in users. Allow guests to join, then send the Notetaker again.</p>
+              {{else if (eq meeting_state "entry_denied")}}
+              <p style="margin: 16px 0 0 0;">Somebody in the meeting declined to admit the Notetaker.</p>
+              {{else if (eq meeting_state "meeting_capacity_reached")}}
+              <p style="margin: 16px 0 0 0;">The meeting was full.</p>
+              {{else}}
+              <p style="margin: 16px 0 0 0;">The Notetaker joins as a guest. If the meeting has a waiting room, or is limited to people in your organization, somebody has to admit it. It gives up 10 minutes after the scheduled join time.</p>
+              {{/if}}
+              {{else if (eq status "disconnected")}}
+              {{#if (eq meeting_state "kicked")}}
+              <p style="margin: 16px 0 0 0;">Somebody removed the Notetaker from your {{#if meeting_provider}}{{meeting_provider}} {{/if}}meeting. It recorded up to that point.</p>
+              {{else if (eq meeting_state "meeting_ended")}}
+              <p style="margin: 16px 0 0 0;">The meeting ended and the Notetaker has left. The recording and transcript are being processed.</p>
+              {{else}}
+              <p style="margin: 16px 0 0 0;">The Notetaker has left your {{#if meeting_provider}}{{meeting_provider}} {{/if}}meeting. The reason is below.</p>
+              {{/if}}
+              {{else if (eq status "attending")}}
+              <p style="margin: 16px 0 0 0;">The Notetaker is in your {{#if meeting_provider}}{{meeting_provider}} {{/if}}meeting and recording.</p>
+              {{else}}
+              <p style="margin: 16px 0 0 0;">The Notetaker is joining your {{#if meeting_provider}}{{meeting_provider}} {{/if}}meeting. If the meeting has a waiting room, admit it when it appears.</p>
+              {{/if}}
+            </td>
+          </tr>
+
+          <tr>
+            <td class="pad" style="padding: 24px 48px 0 48px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="table-layout: fixed;">
+                {{#if status}}
+                <tr>
+                  <td valign="top" width="104" style="width: 104px; padding: 12px 0; border-bottom: 1px solid #EFEFEF; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 15px; line-height: 24px; color: #5F6368;">Status</td>
+                  <td valign="top" style="padding: 12px 0; border-bottom: 1px solid #EFEFEF; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 15px; line-height: 24px; color: #1F1F1F; word-break: break-word; overflow-wrap: anywhere;">{{status}}</td>
+                </tr>
+                {{/if}}
+                {{#if meeting_state}}
+                <tr>
+                  <td valign="top" width="104" style="width: 104px; padding: 12px 0; border-bottom: 1px solid #EFEFEF; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 15px; line-height: 24px; color: #5F6368;">Reason</td>
+                  <td valign="top" style="padding: 12px 0; border-bottom: 1px solid #EFEFEF; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 15px; line-height: 24px; color: #1F1F1F; word-break: break-word; overflow-wrap: anywhere;">{{meeting_state}}</td>
+                </tr>
+                {{/if}}
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="pad" style="padding: 44px 48px 48px 48px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="border-top: 1px solid #E6E6E6; padding-top: 20px; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 13px; line-height: 20px; color: #5F6368; word-break: break-all;">{{#if id}}Notetaker {{id}}{{/if}}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

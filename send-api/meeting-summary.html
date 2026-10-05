@@ -1,0 +1,131 @@
+{{!--
+  subject: Meeting notes: {{#if meetingTitle}}{{meetingTitle}}{{else}}{{meetingDate}}{{/if}}
+  trigger: none (Send API, POST /v3/grants/{grant_id}/messages/send or /v3/domains/{domain}/messages/send)
+  Variables: meetingTitle, meetingDate, attendees[], summary (HTML), actionItems[] (HTML), recordingUrl, notetakerName, notetakerId.
+  summary and actionItems render unescaped ({{{ }}}): sanitize them before you send.
+  Replace the logo (nylas-logo.png) with your own, hosted anywhere public.
+  Replace "Your Product" and https://example.com in the footer.
+--}}
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light only" />
+  <meta name="supported-color-schemes" content="light" />
+  <title>{{#if meetingTitle}}{{meetingTitle}}{{else}}Meeting notes{{/if}}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    body { margin: 0; padding: 0; background-color: #F2F2F4; }
+    .summary p { margin: 0 0 16px 0; }
+    .summary p:last-child { margin-bottom: 0; }
+    .summary ul, .summary ol { margin: 0 0 16px 0; padding-left: 22px; }
+    .summary li { margin: 0 0 8px 0; }
+    .summary strong, .summary b { color: #000000; font-weight: 600; }
+    .summary h1, .summary h2, .summary h3 { font-size: 16px; line-height: 26px; font-weight: 600; color: #000000; margin: 24px 0 8px 0; }
+    .summary a, .task a { color: #0B7D72; }
+    @media only screen and (max-width: 700px) {
+      .wrap { width: 100% !important; }
+      .pad { padding-left: 24px !important; padding-right: 24px !important; }
+      .hero-pad { padding: 40px 16px 44px 16px !important; }
+      .hero-wrap { padding: 0 8px !important; }
+      .page-pad { padding: 12px 8px !important; }
+      .wrap { border-radius: 10px !important; }
+      .hero-pad a { white-space: normal !important; }
+      .headline { font-size: 28px !important; line-height: 34px !important; }
+    }
+  </style>
+</head>
+
+<body style="margin: 0; padding: 0; background-color: #F2F2F4;">
+  <div style="display: none; max-height: 0; overflow: hidden; opacity: 0; mso-hide: all;">{{#if meetingTitle}}Notes from {{meetingTitle}}, {{meetingDate}}.{{else}}Notes from your meeting on {{meetingDate}}.{{/if}}</div>
+
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#F2F2F4" style="background-color: #F2F2F4;">
+    <tr>
+      <td class="page-pad" align="center" style="padding: 40px 16px;">
+        <table role="presentation" class="wrap" width="680" cellpadding="0" cellspacing="0" border="0" bgcolor="#FFFFFF" style="width: 680px; max-width: 680px; background-color: #FFFFFF; border-collapse: separate; border-radius: 12px; overflow: hidden; border: 1px solid #E4E4E8;">
+
+          <!-- Logo -->
+          <tr>
+            <td class="pad" style="padding: 32px 48px 28px 48px;">
+              <img src="https://developer.nylas.com/_images/email/nylas-logo.png" alt="Nylas" width="96" style="display: block; width: 96px; height: auto; border: 0;" />
+            </td>
+          </tr>
+
+          <!-- Hero: the meeting -->
+          <tr>
+            <td class="hero-wrap" style="padding: 0 12px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate; border-radius: 8px; overflow: hidden;">
+                <tr>
+            <td class="hero-pad" bgcolor="#1F1F1F" style="padding: 52px 36px 56px 36px; border-radius: 8px; background-color: #1F1F1F; background-image: radial-gradient(ellipse 55% 60% at 100% 100%, #365462 0%, rgba(31, 31, 31, 0) 70%), radial-gradient(ellipse 80% 90% at 85% 0%, #3C5EC4 0%, #293455 45%, #1F1F1F 78%);">
+              <h1 class="headline" style="margin: 0; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 36px; line-height: 42px; font-weight: 500; letter-spacing: -0.5px; color: #FFFFFF;">{{#if meetingTitle}}{{meetingTitle}}{{else}}Meeting notes{{/if}}</h1>
+              <p style="margin: 16px 0 0 0; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 15px; line-height: 24px; color: #BCCAF4;">{{meetingDate}}</p>
+              {{#if attendees}}
+              <p style="margin: 4px 0 0 0; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 15px; line-height: 24px; color: #BCCAF4;">With {{#each attendees}}{{#unless @first}}, {{/unless}}{{this}}{{/each}}</p>
+              {{/if}}
+
+              {{#if recordingUrl}}
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top: 32px;">
+                <tr>
+                  <td bgcolor="#FFFFFF" style="background-color: #FFFFFF; border-radius: 999px;">
+                    <a href="{{recordingUrl}}" style="display: inline-block; padding: 14px 30px; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 500; line-height: 20px; color: #080817; text-decoration: none; border-radius: 999px;">Watch the recording</a>
+                  </td>
+                </tr>
+              </table>
+              {{/if}}
+            </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Summary -->
+          <tr>
+            <td class="pad" style="padding: 44px 48px 0 48px;">
+              <h2 style="margin: 0 0 16px 0; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 20px; line-height: 28px; font-weight: 600; letter-spacing: -0.2px; color: #000000;">Summary</h2>
+              <div class="summary" style="font-family: Geist, Helvetica, Arial, sans-serif; font-size: 16px; line-height: 26px; color: #1F1F1F;">
+                {{{summary}}}
+              </div>
+            </td>
+          </tr>
+
+          {{#if actionItems}}
+          <!-- Action items -->
+          <tr>
+            <td class="pad" style="padding: 40px 48px 0 48px;">
+              <h2 style="margin: 0 0 8px 0; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 20px; line-height: 28px; font-weight: 600; letter-spacing: -0.2px; color: #000000;">Action items</h2>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                {{#each actionItems}}
+                <tr>
+                  <td valign="top" width="30" style="width: 30px; padding: 17px 0 0 0;">
+                    <div style="width: 14px; height: 14px; border: 1.5px solid #4169E1; border-radius: 4px;"></div>
+                  </td>
+                  <td class="task" valign="top" style="padding: 12px 0; border-bottom: 1px solid #EFEFEF; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 16px; line-height: 26px; color: #1F1F1F;">{{{this}}}</td>
+                </tr>
+                {{/each}}
+              </table>
+            </td>
+          </tr>
+          {{/if}}
+
+          <!-- Footer -->
+          <tr>
+            <td class="pad" style="padding: 44px 48px 48px 48px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="border-top: 1px solid #E6E6E6; padding-top: 20px; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 13px; line-height: 20px; color: #5F6368;">
+                    Sent from <a href="https://example.com" style="color: #5F6368; text-decoration: underline;">Your Product</a>.
+                    {{#if notetakerName}}<br />Notetaker: {{notetakerName}}{{#if notetakerId}} ({{notetakerId}}){{/if}}{{/if}}
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+

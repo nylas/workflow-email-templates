@@ -1,0 +1,110 @@
+{{!--
+  subject: {{#if (eq workspace_id "YOUR_NOTES_WORKSPACE_ID")}}Sign back in to Acme Notes{{else}}Sign back in to Acme Booking{{/if}}
+  trigger: grant.expired
+  One application, two products: branches on workspace_id. Replace YOUR_NOTES_WORKSPACE_ID and the Acme names and links.
+  Replace the logo (nylas-logo.png) with your own, hosted anywhere public.
+--}}
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light only" />
+  <meta name="supported-color-schemes" content="light" />
+  <title>Sign back in</title>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    body { margin: 0; padding: 0; background-color: #F2F2F4; }
+    @media only screen and (max-width: 700px) {
+      .wrap { width: 100% !important; }
+      .pad { padding-left: 24px !important; padding-right: 24px !important; }
+      .hero-pad { padding: 44px 16px 48px 16px !important; }
+      .hero-wrap { padding: 0 8px !important; }
+      .page-pad { padding: 12px 8px !important; }
+      .wrap { border-radius: 10px !important; }
+      .hero-pad a { white-space: normal !important; }
+      .headline { font-size: 30px !important; line-height: 36px !important; }
+    }
+  </style>
+</head>
+
+<body style="margin: 0; padding: 0; background-color: #F2F2F4;">
+  {{#if (eq workspace_id "YOUR_NOTES_WORKSPACE_ID")}}
+  <div style="display: none; max-height: 0; overflow: hidden; opacity: 0; mso-hide: all;">Acme Notes can't join or record your meetings until you sign back in.</div>
+  {{else}}
+  <div style="display: none; max-height: 0; overflow: hidden; opacity: 0; mso-hide: all;">People can't book time with you until you sign back in to Acme Booking.</div>
+  {{/if}}
+
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#F2F2F4" style="background-color: #F2F2F4;">
+    <tr>
+      <td class="page-pad" align="center" style="padding: 40px 16px;">
+        <table role="presentation" class="wrap" width="680" cellpadding="0" cellspacing="0" border="0" bgcolor="#FFFFFF" style="width: 680px; max-width: 680px; background-color: #FFFFFF; border-collapse: separate; border-radius: 12px; overflow: hidden; border: 1px solid #E4E4E8;">
+
+          <!-- Logo -->
+          <tr>
+            <td class="pad" style="padding: 32px 48px 28px 48px;">
+              <img src="https://developer.nylas.com/_images/email/nylas-logo.png" alt="Nylas" width="96" style="display: block; width: 96px; height: auto; border: 0;" />
+            </td>
+          </tr>
+
+          <!-- Hero -->
+          <tr>
+            <td class="hero-wrap" style="padding: 0 12px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate; border-radius: 8px; overflow: hidden;">
+                <tr>
+            {{#if (eq workspace_id "YOUR_NOTES_WORKSPACE_ID")}}<td class="hero-pad" bgcolor="#1F1F1F" style="padding: 56px 36px 60px 36px; border-radius: 8px; background-color: #1F1F1F; background-image: radial-gradient(ellipse 55% 60% at 100% 100%, #365462 0%, rgba(31, 31, 31, 0) 70%), radial-gradient(ellipse 80% 90% at 85% 0%, #3C5EC4 0%, #293455 45%, #1F1F1F 78%);">{{else}}<td class="hero-pad" bgcolor="#1F1F1F" style="padding: 56px 36px 60px 36px; border-radius: 8px; background-color: #1F1F1F; background-image: radial-gradient(ellipse 55% 60% at 100% 100%, #365462 0%, rgba(31, 31, 31, 0) 70%), radial-gradient(ellipse 80% 90% at 85% 0%, #18AA9C 0%, #1D4D48 45%, #1F1F1F 78%);">{{/if}}
+              {{#if (eq workspace_id "YOUR_NOTES_WORKSPACE_ID")}}
+              <h1 class="headline" style="margin: 0; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 38px; line-height: 44px; font-weight: 500; letter-spacing: -0.5px; color: #FFFFFF;">Sign back in to keep Acme Notes in your meetings</h1>
+              <p style="margin: 20px 0 0 0; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 16px; line-height: 26px; color: #BCCAF4;">Your calendar connection expired, so Acme Notes can't join, record, or summarize your meetings.</p>
+              {{else}}
+              <h1 class="headline" style="margin: 0; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 38px; line-height: 44px; font-weight: 500; letter-spacing: -0.5px; color: #FFFFFF;">Sign back in so people can keep booking you</h1>
+              <p style="margin: 20px 0 0 0; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 16px; line-height: 26px; color: #AEEAE4;">Your calendar connection expired, so Acme Booking can't check when you're free or add new bookings.</p>
+              {{/if}}
+
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top: 32px;">
+                <tr>
+                  <td bgcolor="#FFFFFF" style="background-color: #FFFFFF; border-radius: 999px;">
+                    {{#if (eq workspace_id "YOUR_NOTES_WORKSPACE_ID")}}
+                    <a href="https://notes.example.com" style="display: inline-block; padding: 14px 30px; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 500; line-height: 20px; color: #080817; text-decoration: none; border-radius: 999px;">Sign in to Acme Notes</a>
+                    {{else}}
+                    <a href="https://booking.example.com" style="display: inline-block; padding: 14px 30px; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 500; line-height: 20px; color: #080817; text-decoration: none; border-radius: 999px;">Sign in to Acme Booking</a>
+                    {{/if}}
+                  </td>
+                </tr>
+              </table>
+            </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Body -->
+          <tr>
+            <td class="pad" style="padding: 40px 48px 0 48px; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 16px; line-height: 26px; color: #1F1F1F;">
+              <p style="margin: 0;">{{#if recipient}}{{#if recipient.first_name}}Hi {{recipient.first_name}},{{else}}Hi,{{/if}}{{else}}Hi,{{/if}}</p>
+              <p style="margin: 16px 0 0 0;">We can no longer reach {{#if email}}<span style="color: #000000; font-weight: 500;">{{email}}</span>{{else}}your connected account{{/if}}{{#if provider}}{{#if (eq provider "google")}} on Google{{else if (eq provider "microsoft")}} on Microsoft{{else if (eq provider "icloud")}} on iCloud{{else if (eq provider "yahoo")}} on Yahoo{{else if (eq provider "imap")}} on IMAP{{else if (eq provider "ews")}} on Exchange{{else if (eq provider "eas")}} on Exchange{{/if}}{{/if}}. This usually happens after a password change, or when access is removed in your account settings.</p>
+              <p style="margin: 16px 0 0 0;">Sign in again with the same account and everything picks up where it left off. It takes about a minute.</p>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td class="pad" style="padding: 40px 48px 48px 48px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="border-top: 1px solid #E6E6E6; padding-top: 20px; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 13px; line-height: 20px; color: #5F6368;">
+                    {{#if grant_id}}<br />Reference {{grant_id}}{{/if}}
+                    <br /><a href="https://example.com" style="color: #5F6368; text-decoration: underline;">Acme</a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+

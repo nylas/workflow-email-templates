@@ -1,0 +1,85 @@
+{{!--
+  subject: Your account was disconnected
+  trigger: grant.deleted
+  Replace the logo (nylas-logo.png) with your own, hosted anywhere public.
+--}}
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light only" />
+  <meta name="supported-color-schemes" content="light" />
+  <title>Your account was disconnected</title>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    body { margin: 0; padding: 0; background-color: #F2F2F4; }
+    @media only screen and (max-width: 700px) {
+      .wrap { width: 100% !important; }
+      .pad { padding-left: 24px !important; padding-right: 24px !important; }
+      .hero-pad { padding: 40px 16px 44px 16px !important; }
+      .hero-wrap { padding: 0 8px !important; }
+      .page-pad { padding: 12px 8px !important; }
+      .wrap { border-radius: 10px !important; }
+      .hero-pad a { white-space: normal !important; }
+      .headline { font-size: 28px !important; line-height: 34px !important; }
+    }
+  </style>
+</head>
+
+<body style="margin: 0; padding: 0; background-color: #F2F2F4;">
+  {{!-- grant.deleted can't send from the grant, so its workflow must set a from address on a verified domain. --}}
+  <div style="display: none; max-height: 0; overflow: hidden; opacity: 0; mso-hide: all;">Your account was disconnected and syncing has stopped.</div>
+
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#F2F2F4" style="background-color: #F2F2F4;">
+    <tr>
+      <td class="page-pad" align="center" style="padding: 40px 16px;">
+        <table role="presentation" class="wrap" width="680" cellpadding="0" cellspacing="0" border="0" bgcolor="#FFFFFF" style="width: 680px; max-width: 680px; background-color: #FFFFFF; border-collapse: separate; border-radius: 12px; overflow: hidden; border: 1px solid #E4E4E8;">
+
+          <tr>
+            <td class="pad" style="padding: 32px 48px 28px 48px;">
+              {{!-- Replace with your own logo. --}}
+              <img src="https://developer.nylas.com/_images/email/nylas-logo.png" alt="Nylas" width="96" style="display: block; width: 96px; height: auto; border: 0;" />
+            </td>
+          </tr>
+
+          <tr>
+            <td class="hero-wrap" style="padding: 0 12px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate; border-radius: 8px; overflow: hidden;">
+                <tr>
+            <td class="hero-pad" bgcolor="#1F1F1F" style="padding: 52px 36px 56px 36px; border-radius: 8px; background-color: #1F1F1F; background-image: radial-gradient(ellipse 80% 90% at 85% 0%, #DD6B5F 0%, #5E3834 45%, #1F1F1F 78%);">
+              <h1 class="headline" style="margin: 0; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 34px; line-height: 40px; font-weight: 500; letter-spacing: -0.5px; color: #FFFFFF;">Your account was disconnected</h1>
+              <p style="margin: 18px 0 0 0; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 16px; line-height: 26px; color: #FFD0CB; word-break: break-word;">{{#if email}}<span style="font-weight: 500;">{{email}}</span>{{else}}your account{{/if}}{{#if provider}}{{#if (eq provider "google")}} on Google{{else if (eq provider "microsoft")}} on Microsoft{{else if (eq provider "icloud")}} on iCloud{{else if (eq provider "yahoo")}} on Yahoo{{else if (eq provider "imap")}} on IMAP{{else if (eq provider "ews")}} on Exchange{{else if (eq provider "eas")}} on Exchange{{/if}}{{/if}} is no longer connected, and syncing has stopped.</p>
+              {{!-- Point the button at a page you control that starts a fresh OAuth flow. --}}
+              <div style="margin-top: 20px; font-size: 0; line-height: 0;"><a href="https://example.com/reconnect" style="display: inline-block; margin: 12px 12px 0 0; padding: 14px 28px; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 500; line-height: 20px; text-decoration: none; border-radius: 999px; white-space: nowrap; background-color: #FFFFFF; color: #080817; border: 1px solid #FFFFFF;">Reconnect account</a></div>
+            </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="pad" style="padding: 40px 48px 0 48px; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 16px; line-height: 26px; color: #1F1F1F; word-break: break-word;">
+              <p style="margin: 0;">{{#if recipient}}{{#if recipient.first_name}}Hi {{recipient.first_name}},{{else}}Hi,{{/if}}{{else}}Hi,{{/if}}</p>
+              <p style="margin: 16px 0 0 0;">If you didn't expect this, you can reconnect at any time.</p>
+              <p style="margin: 16px 0 0 0;">Reconnecting creates a new connection. It doesn't restore the old one.</p>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="pad" style="padding: 44px 48px 48px 48px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  {{!-- IDs for support: a user who forwards the email instead of clicking saves a round of questions. --}}
+                  <td style="border-top: 1px solid #E6E6E6; padding-top: 20px; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 13px; line-height: 20px; color: #5F6368; word-break: break-all;">{{#if grant_id}}Grant ID {{grant_id}}<br />{{/if}}{{#if integration_id}}Integration ID {{integration_id}}<br />{{/if}}{{#if code}}Notification code {{code}}{{/if}}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

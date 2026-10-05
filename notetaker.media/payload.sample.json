@@ -1,0 +1,62 @@
+{
+  "id": "8c2e5a7f-1d4b-4e9a-b3c6-7f2d9e1a5b8c",
+  "grant_id": "9d1f4c2a-6b8e-4f3d-a7c5-2e9b1d4f6a8c",
+  "object": "notetaker",
+  "meeting_settings": {
+    "video_recording": true,
+    "audio_recording": true,
+    "transcription": true,
+    "transcription_settings": {
+      "expected_languages": [
+        "en",
+        "es"
+      ],
+      "fallback_language": "en"
+    },
+    "summary": true,
+    "summary_settings": {
+      "custom_instructions": "Focus on action items related to the product launch."
+    },
+    "action_items": true,
+    "action_items_settings": {
+      "custom_instructions": "Group action items by team member."
+    },
+    "leave_after_silence_seconds": 300,
+    "messages": {
+      "on_join": [
+        {
+          "type": "text",
+          "content": "👋 Hey team! I'm your AI notetaker — here to capture the key points.",
+          "send_after_ms": 5000
+        }
+      ],
+      "on_participant_join": [
+        {
+          "type": "text",
+          "content": "👋 Welcome! Recording and transcription are running.",
+          "debounce_ms": 3000
+        }
+      ]
+    }
+  },
+  "meeting_provider": "Google Meet",
+  "meeting_link": "https://meet.google.com/xyz-abcd-efg",
+  "join_time": 1791997200000,
+  "event": {
+    "ical_uid": "7p3k9m2qv1abcdefghijk@google.com",
+    "event_id": "7p3k9m2qv1abcdefghijk",
+    "master_event_id": "7p3k9m2qv1abcdefghijk"
+  },
+  "status": "available",
+  "state": "available",
+  "media": {
+    "recording": "https://storage.example.com/notetaker/8c2e5a7f-1d4b-4e9a-b3c6-7f2d9e1a5b8c/recording.mp4?sig=abc123",
+    "recording_duration": "1784",
+    "recording_file_format": "mp4",
+    "thumbnail": "https://storage.example.com/notetaker/8c2e5a7f-1d4b-4e9a-b3c6-7f2d9e1a5b8c/thumbnail.png?sig=abc123",
+    "transcript": "https://storage.example.com/notetaker/8c2e5a7f-1d4b-4e9a-b3c6-7f2d9e1a5b8c/transcript.json?sig=abc123",
+    "summary": "https://storage.example.com/notetaker/8c2e5a7f-1d4b-4e9a-b3c6-7f2d9e1a5b8c/summary.json?sig=abc123",
+    "action_items": "https://storage.example.com/notetaker/8c2e5a7f-1d4b-4e9a-b3c6-7f2d9e1a5b8c/action_items.json?sig=abc123",
+    "retained_until": 1793206800
+  }
+}

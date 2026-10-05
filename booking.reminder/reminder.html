@@ -1,0 +1,124 @@
+{{!--
+  subject: {{#if (eq booking_info.guest_language "es")}}Empieza pronto: {{booking_info.title}}{{else if (eq booking_info.guest_language "fr")}}Bientôt : {{booking_info.title}}{{else if (eq booking_info.guest_language "de")}}Beginnt bald: {{booking_info.title}}{{else if (eq booking_info.guest_language "sv")}}Börjar snart: {{booking_info.title}}{{else if (eq booking_info.guest_language "zh")}}即将开始：{{booking_info.title}}{{else if (eq booking_info.guest_language "ja")}}まもなく開始：{{booking_info.title}}{{else if (eq booking_info.guest_language "nl")}}Begint zo: {{booking_info.title}}{{else if (eq booking_info.guest_language "ko")}}곧 시작: {{booking_info.title}}{{else}}Starting soon: {{booking_info.title}}{{/if}}
+  trigger: booking.reminder
+  Languages: en, es, fr, de, sv, zh, ja, nl, ko, chosen by booking_info.guest_language. Unknown languages fall back to English.
+  Replace the logo (nylas-logo.png) with your own, hosted anywhere public.
+  Replace "Your Product" and https://example.com in the footer (one per language).
+--}}
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light only" />
+  <meta name="supported-color-schemes" content="light" />
+  <title>{{booking_info.title}}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    body { margin: 0; padding: 0; background-color: #F2F2F4; }
+    .notes a { color: #0B7D72; text-decoration: underline; word-break: break-all; }
+    @media only screen and (max-width: 700px) {
+      .wrap { width: 100% !important; }
+      .pad { padding-left: 24px !important; padding-right: 24px !important; }
+      .hero-pad { padding: 40px 16px 44px 16px !important; }
+      .hero-wrap { padding: 0 8px !important; }
+      .page-pad { padding: 12px 8px !important; }
+      .wrap { border-radius: 10px !important; }
+      .hero-pad a { white-space: normal !important; }
+      .headline { font-size: 28px !important; line-height: 34px !important; }
+    }
+  </style>
+</head>
+
+<body style="margin: 0; padding: 0; background-color: #F2F2F4;">
+  
+  <div style="display: none; max-height: 0; overflow: hidden; opacity: 0; mso-hide: all;">{{#if (eq booking_info.guest_language "es")}}Aquí tienes todo lo que necesitas para unirte.{{else if (eq booking_info.guest_language "fr")}}Voici tout ce qu'il vous faut pour le rejoindre.{{else if (eq booking_info.guest_language "de")}}Hier ist alles, was Sie zum Teilnehmen brauchen.{{else if (eq booking_info.guest_language "sv")}}Här är allt du behöver för att ansluta.{{else if (eq booking_info.guest_language "zh")}}以下是加入会议所需的全部信息。{{else if (eq booking_info.guest_language "ja")}}参加に必要な情報は以下のとおりです。{{else if (eq booking_info.guest_language "nl")}}Hier is alles wat je nodig hebt om deel te nemen.{{else if (eq booking_info.guest_language "ko")}}회의 참여에 필요한 정보는 다음과 같습니다.{{else}}Here's everything you need to join.{{/if}}</div>
+
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#F2F2F4" style="background-color: #F2F2F4;">
+    <tr>
+      <td class="page-pad" align="center" style="padding: 40px 16px;">
+        <table role="presentation" class="wrap" width="680" cellpadding="0" cellspacing="0" border="0" bgcolor="#FFFFFF" style="width: 680px; max-width: 680px; background-color: #FFFFFF; border-collapse: separate; border-radius: 12px; overflow: hidden; border: 1px solid #E4E4E8;">
+
+          <tr>
+            <td class="pad" style="padding: 32px 48px 28px 48px;">
+              
+              {{#if booking_info.additional_fields}}{{#if booking_info.additional_fields.logo_url}}
+              <img src="{{booking_info.additional_fields.logo_url}}" alt="Company logo" width="96" style="display: block; width: 96px; height: auto; border: 0;" />
+              {{else}}
+              <img src="https://developer.nylas.com/_images/email/nylas-logo.png" alt="Nylas" width="96" style="display: block; width: 96px; height: auto; border: 0;" />
+              {{/if}}{{else}}
+              <img src="https://developer.nylas.com/_images/email/nylas-logo.png" alt="Nylas" width="96" style="display: block; width: 96px; height: auto; border: 0;" />
+              {{/if}}
+            </td>
+          </tr>
+
+          <tr>
+            <td class="hero-wrap" style="padding: 0 12px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: separate; border-radius: 8px; overflow: hidden;">
+                <tr>
+            <td class="hero-pad" bgcolor="#1F1F1F" style="padding: 52px 36px 56px 36px; border-radius: 8px; background-color: #1F1F1F; background-image: radial-gradient(ellipse 55% 60% at 100% 100%, #365462 0%, rgba(31, 31, 31, 0) 70%), radial-gradient(ellipse 80% 90% at 85% 0%, #3C5EC4 0%, #293455 45%, #1F1F1F 78%);">
+              
+              <h1 class="headline" style="margin: 0; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 34px; line-height: 40px; font-weight: 500; letter-spacing: -0.5px; color: #FFFFFF; word-break: break-word; overflow-wrap: anywhere;">{{#if (eq booking_info.guest_language "es")}}Tu reunión empieza pronto: {{booking_info.title}}{{else if (eq booking_info.guest_language "fr")}}Votre rendez-vous commence bientôt : {{booking_info.title}}{{else if (eq booking_info.guest_language "de")}}Ihr Termin beginnt bald: {{booking_info.title}}{{else if (eq booking_info.guest_language "sv")}}Ditt möte börjar snart: {{booking_info.title}}{{else if (eq booking_info.guest_language "zh")}}会议即将开始：{{booking_info.title}}{{else if (eq booking_info.guest_language "ja")}}まもなく会議が始まります：{{booking_info.title}}{{else if (eq booking_info.guest_language "nl")}}Je afspraak begint zo: {{booking_info.title}}{{else if (eq booking_info.guest_language "ko")}}곧 회의가 시작됩니다: {{booking_info.title}}{{else}}{{booking_info.title}} starts soon{{/if}}</h1>
+              <p style="margin: 18px 0 0 0; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 17px; line-height: 26px; color: #FFFFFF; word-break: break-word;">{{#if booking_info.guest_language}}{{#if recipient}}{{#if booking_info.additional_fields}}{{#if (lookup booking_info.additional_fields recipient.email)}}{{ formatDate booking_info.start_time (lookup booking_info.additional_fields recipient.email) "DDDD, t ZZZZ" booking_info.guest_language }}{{else}}{{#if booking_info.guest_timezone}}{{ formatDate booking_info.start_time booking_info.guest_timezone "DDDD, t ZZZZ" booking_info.guest_language }}{{else}}{{ formatDate booking_info.start_time booking_info.organizer_timezone "DDDD, t ZZZZ" booking_info.guest_language }}{{/if}}{{/if}}{{else}}{{#if booking_info.guest_timezone}}{{ formatDate booking_info.start_time booking_info.guest_timezone "DDDD, t ZZZZ" booking_info.guest_language }}{{else}}{{ formatDate booking_info.start_time booking_info.organizer_timezone "DDDD, t ZZZZ" booking_info.guest_language }}{{/if}}{{/if}}{{else}}{{#if booking_info.guest_timezone}}{{ formatDate booking_info.start_time booking_info.guest_timezone "DDDD, t ZZZZ" booking_info.guest_language }}{{else}}{{ formatDate booking_info.start_time booking_info.organizer_timezone "DDDD, t ZZZZ" booking_info.guest_language }}{{/if}}{{/if}}{{else}}{{#if recipient}}{{#if booking_info.additional_fields}}{{#if (lookup booking_info.additional_fields recipient.email)}}{{ formatDate booking_info.start_time (lookup booking_info.additional_fields recipient.email) "DDDD, t ZZZZ" "en" }}{{else}}{{#if booking_info.guest_timezone}}{{ formatDate booking_info.start_time booking_info.guest_timezone "DDDD, t ZZZZ" "en" }}{{else}}{{ formatDate booking_info.start_time booking_info.organizer_timezone "DDDD, t ZZZZ" "en" }}{{/if}}{{/if}}{{else}}{{#if booking_info.guest_timezone}}{{ formatDate booking_info.start_time booking_info.guest_timezone "DDDD, t ZZZZ" "en" }}{{else}}{{ formatDate booking_info.start_time booking_info.organizer_timezone "DDDD, t ZZZZ" "en" }}{{/if}}{{/if}}{{else}}{{#if booking_info.guest_timezone}}{{ formatDate booking_info.start_time booking_info.guest_timezone "DDDD, t ZZZZ" "en" }}{{else}}{{ formatDate booking_info.start_time booking_info.organizer_timezone "DDDD, t ZZZZ" "en" }}{{/if}}{{/if}}{{/if}}</p>
+              
+              <div style="margin-top: 20px; font-size: 0; line-height: 0;">{{#if booking_info.location}}<a href="{{booking_info.location}}" style="display: inline-block; margin: 12px 12px 0 0; padding: 14px 28px; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 500; line-height: 20px; text-decoration: none; border-radius: 999px; white-space: nowrap; background-color: #FFFFFF; color: #080817; border: 1px solid #FFFFFF;">{{#if (eq booking_info.guest_language "es")}}Unirse a la reunión{{else if (eq booking_info.guest_language "fr")}}Rejoindre la réunion{{else if (eq booking_info.guest_language "de")}}Am Meeting teilnehmen{{else if (eq booking_info.guest_language "sv")}}Anslut till mötet{{else if (eq booking_info.guest_language "zh")}}加入会议{{else if (eq booking_info.guest_language "ja")}}会議に参加{{else if (eq booking_info.guest_language "nl")}}Deelnemen{{else if (eq booking_info.guest_language "ko")}}회의 참여{{else}}Join the meeting{{/if}}</a>{{/if}}{{#unless booking_info.hide_rescheduling_options}}{{#if booking_info.participant_rescheduling_url}}<a href="{{booking_info.participant_rescheduling_url}}" style="display: inline-block; margin: 12px 12px 0 0; padding: 14px 28px; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 500; line-height: 20px; text-decoration: none; border-radius: 999px; white-space: nowrap; background-color: #242B3E; color: #FFFFFF; border: 1px solid #304480;">{{#if (eq booking_info.guest_language "es")}}Reprogramar{{else if (eq booking_info.guest_language "fr")}}Reprogrammer{{else if (eq booking_info.guest_language "de")}}Verschieben{{else if (eq booking_info.guest_language "sv")}}Boka om{{else if (eq booking_info.guest_language "zh")}}改期{{else if (eq booking_info.guest_language "ja")}}日時を変更{{else if (eq booking_info.guest_language "nl")}}Verplaatsen{{else if (eq booking_info.guest_language "ko")}}일정 변경{{else}}Reschedule{{/if}}</a>{{/if}}{{/unless}}{{#unless booking_info.hide_cancellation_options}}{{#if booking_info.participant_cancellation_url}}<a href="{{booking_info.participant_cancellation_url}}" style="display: inline-block; margin: 12px 12px 0 0; padding: 14px 28px; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 500; line-height: 20px; text-decoration: none; border-radius: 999px; white-space: nowrap; background-color: #503330; color: #FFFFFF; border: 1px solid #9A5048;">{{#if (eq booking_info.guest_language "es")}}Cancelar{{else if (eq booking_info.guest_language "fr")}}Annuler{{else if (eq booking_info.guest_language "de")}}Absagen{{else if (eq booking_info.guest_language "sv")}}Ställ in{{else if (eq booking_info.guest_language "zh")}}取消{{else if (eq booking_info.guest_language "ja")}}キャンセル{{else if (eq booking_info.guest_language "nl")}}Annuleren{{else if (eq booking_info.guest_language "ko")}}취소{{else}}Cancel{{/if}}</a>{{/if}}{{/unless}}</div>
+            </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="pad" style="padding: 40px 48px 0 48px; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 16px; line-height: 26px; color: #1F1F1F; word-break: break-word;">
+              <p style="margin: 0;">{{#if recipient}}{{#if recipient.first_name}}{{#if (eq booking_info.guest_language "es")}}Hola, {{recipient.first_name}}:{{else if (eq booking_info.guest_language "fr")}}Bonjour {{recipient.first_name}},{{else if (eq booking_info.guest_language "de")}}Hallo {{recipient.first_name}},{{else if (eq booking_info.guest_language "sv")}}Hej {{recipient.first_name}},{{else if (eq booking_info.guest_language "zh")}}{{recipient.first_name}}，你好：{{else if (eq booking_info.guest_language "ja")}}{{recipient.first_name}} 様{{else if (eq booking_info.guest_language "nl")}}Hoi {{recipient.first_name}},{{else if (eq booking_info.guest_language "ko")}}{{recipient.first_name}}님, 안녕하세요.{{else}}Hi {{recipient.first_name}},{{/if}}{{else}}{{#if (eq booking_info.guest_language "es")}}Hola:{{else if (eq booking_info.guest_language "fr")}}Bonjour,{{else if (eq booking_info.guest_language "de")}}Hallo,{{else if (eq booking_info.guest_language "sv")}}Hej,{{else if (eq booking_info.guest_language "zh")}}你好：{{else if (eq booking_info.guest_language "ja")}}こんにちは{{else if (eq booking_info.guest_language "nl")}}Hoi,{{else if (eq booking_info.guest_language "ko")}}안녕하세요.{{else}}Hi,{{/if}}{{/if}}{{else}}{{#if (eq booking_info.guest_language "es")}}Hola:{{else if (eq booking_info.guest_language "fr")}}Bonjour,{{else if (eq booking_info.guest_language "de")}}Hallo,{{else if (eq booking_info.guest_language "sv")}}Hej,{{else if (eq booking_info.guest_language "zh")}}你好：{{else if (eq booking_info.guest_language "ja")}}こんにちは{{else if (eq booking_info.guest_language "nl")}}Hoi,{{else if (eq booking_info.guest_language "ko")}}안녕하세요.{{else}}Hi,{{/if}}{{/if}}</p>
+              <p style="margin: 16px 0 0 0;">{{#if (eq booking_info.guest_language "es")}}Aquí tienes todo lo que necesitas para unirte.{{else if (eq booking_info.guest_language "fr")}}Voici tout ce qu'il vous faut pour le rejoindre.{{else if (eq booking_info.guest_language "de")}}Hier ist alles, was Sie zum Teilnehmen brauchen.{{else if (eq booking_info.guest_language "sv")}}Här är allt du behöver för att ansluta.{{else if (eq booking_info.guest_language "zh")}}以下是加入会议所需的全部信息。{{else if (eq booking_info.guest_language "ja")}}参加に必要な情報は以下のとおりです。{{else if (eq booking_info.guest_language "nl")}}Hier is alles wat je nodig hebt om deel te nemen.{{else if (eq booking_info.guest_language "ko")}}회의 참여에 필요한 정보는 다음과 같습니다.{{else}}Here's everything you need to join.{{/if}}</p>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="pad" style="padding: 24px 48px 0 48px;">
+              
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="table-layout: fixed;">
+                {{#if booking_info.duration}}
+                <tr>
+                  <td valign="top" width="104" style="width: 104px; padding: 12px 0; border-bottom: 1px solid #EFEFEF; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 15px; line-height: 24px; color: #5F6368;">{{#if (eq booking_info.guest_language "es")}}Duración{{else if (eq booking_info.guest_language "fr")}}Durée{{else if (eq booking_info.guest_language "de")}}Dauer{{else if (eq booking_info.guest_language "sv")}}Längd{{else if (eq booking_info.guest_language "zh")}}时长{{else if (eq booking_info.guest_language "ja")}}所要時間{{else if (eq booking_info.guest_language "nl")}}Duur{{else if (eq booking_info.guest_language "ko")}}소요 시간{{else}}Duration{{/if}}</td>
+                  <td valign="top" style="padding: 12px 0; border-bottom: 1px solid #EFEFEF; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 15px; line-height: 24px; color: #1F1F1F; word-break: break-word; overflow-wrap: anywhere;">{{#if (eq booking_info.guest_language "es")}}{{booking_info.duration}} minutos{{else if (eq booking_info.guest_language "fr")}}{{booking_info.duration}} minutes{{else if (eq booking_info.guest_language "de")}}{{booking_info.duration}} Minuten{{else if (eq booking_info.guest_language "sv")}}{{booking_info.duration}} minuter{{else if (eq booking_info.guest_language "zh")}}{{booking_info.duration}} 分钟{{else if (eq booking_info.guest_language "ja")}}{{booking_info.duration}} 分{{else if (eq booking_info.guest_language "nl")}}{{booking_info.duration}} minuten{{else if (eq booking_info.guest_language "ko")}}{{booking_info.duration}}분{{else}}{{booking_info.duration}} minutes{{/if}}</td>
+                </tr>
+                {{/if}}
+                {{#if booking_info.location}}
+                <tr>
+                  <td valign="top" width="104" style="width: 104px; padding: 12px 0; border-bottom: 1px solid #EFEFEF; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 15px; line-height: 24px; color: #5F6368;">{{#if (eq booking_info.guest_language "es")}}Dónde{{else if (eq booking_info.guest_language "fr")}}Lieu{{else if (eq booking_info.guest_language "de")}}Ort{{else if (eq booking_info.guest_language "sv")}}Plats{{else if (eq booking_info.guest_language "zh")}}地点{{else if (eq booking_info.guest_language "ja")}}場所{{else if (eq booking_info.guest_language "nl")}}Waar{{else if (eq booking_info.guest_language "ko")}}장소{{else}}Where{{/if}}</td>
+                  <td valign="top" style="padding: 12px 0; border-bottom: 1px solid #EFEFEF; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 15px; line-height: 24px; color: #1F1F1F; word-break: break-word; overflow-wrap: anywhere;"><a href="{{booking_info.location}}" style="color: #0B7D72; text-decoration: underline; word-break: break-all;">{{booking_info.location}}</a></td>
+                </tr>
+                {{/if}}
+                <tr>
+                  <td valign="top" width="104" style="width: 104px; padding: 12px 0; border-bottom: 1px solid #EFEFEF; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 15px; line-height: 24px; color: #5F6368;">{{#if (eq booking_info.guest_language "es")}}Quién{{else if (eq booking_info.guest_language "fr")}}Participants{{else if (eq booking_info.guest_language "de")}}Teilnehmer{{else if (eq booking_info.guest_language "sv")}}Deltagare{{else if (eq booking_info.guest_language "zh")}}参与者{{else if (eq booking_info.guest_language "ja")}}参加者{{else if (eq booking_info.guest_language "nl")}}Wie{{else if (eq booking_info.guest_language "ko")}}참석자{{else}}Who{{/if}}</td>
+                  <td valign="top" style="padding: 12px 0; border-bottom: 1px solid #EFEFEF; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 15px; line-height: 24px; color: #1F1F1F; word-break: break-word; overflow-wrap: anywhere;">{{#each booking_info.participants}}{{#if name}}{{name}}{{else}}{{email}}{{/if}}{{#unless @last}}<br />{{/unless}}{{/each}}</td>
+                </tr>
+                {{#if booking_info.event_description}}
+                <tr>
+                  <td valign="top" width="104" style="width: 104px; padding: 12px 0; border-bottom: 1px solid #EFEFEF; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 15px; line-height: 24px; color: #5F6368;">{{#if (eq booking_info.guest_language "es")}}Descripción del evento{{else if (eq booking_info.guest_language "fr")}}Description de l'événement{{else if (eq booking_info.guest_language "de")}}Terminbeschreibung{{else if (eq booking_info.guest_language "sv")}}Beskrivning av mötet{{else if (eq booking_info.guest_language "zh")}}会议说明{{else if (eq booking_info.guest_language "ja")}}会議の説明{{else if (eq booking_info.guest_language "nl")}}Beschrijving{{else if (eq booking_info.guest_language "ko")}}회의 설명{{else}}Event description{{/if}}</td>
+                  <td valign="top" style="padding: 12px 0; border-bottom: 1px solid #EFEFEF; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 15px; line-height: 24px; color: #1F1F1F; word-break: break-word; overflow-wrap: anywhere;"><div class="notes">{{{booking_info.event_description}}}</div></td>
+                </tr>
+                {{/if}}
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="pad" style="padding: 44px 48px 48px 48px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="border-top: 1px solid #E6E6E6; padding-top: 20px; font-family: Geist, Helvetica, Arial, sans-serif; font-size: 13px; line-height: 20px; color: #5F6368;">{{#if (eq booking_info.guest_language "es")}}Programado con <a href="https://example.com" style="color: #5F6368; text-decoration: underline;">Your Product</a>.{{else if (eq booking_info.guest_language "fr")}}Planifié avec <a href="https://example.com" style="color: #5F6368; text-decoration: underline;">Your Product</a>.{{else if (eq booking_info.guest_language "de")}}Geplant mit <a href="https://example.com" style="color: #5F6368; text-decoration: underline;">Your Product</a>.{{else if (eq booking_info.guest_language "sv")}}Bokat med <a href="https://example.com" style="color: #5F6368; text-decoration: underline;">Your Product</a>.{{else if (eq booking_info.guest_language "zh")}}通过 <a href="https://example.com" style="color: #5F6368; text-decoration: underline;">Your Product</a> 预约。{{else if (eq booking_info.guest_language "ja")}}<a href="https://example.com" style="color: #5F6368; text-decoration: underline;">Your Product</a> で予約されました。{{else if (eq booking_info.guest_language "nl")}}Gepland met <a href="https://example.com" style="color: #5F6368; text-decoration: underline;">Your Product</a>.{{else if (eq booking_info.guest_language "ko")}}<a href="https://example.com" style="color: #5F6368; text-decoration: underline;">Your Product</a>(으)로 예약되었습니다.{{else}}Scheduled with <a href="https://example.com" style="color: #5F6368; text-decoration: underline;">Your Product</a>.{{/if}}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+

@@ -1,0 +1,30 @@
+{
+  "first_name": "Nyla",
+  "company_name": "Hart & Miller Design",
+  "company_domain": "hartmiller.example.com",
+  "module_label": "Fit analysis",
+  "module_label_lower": "fit analysis",
+  "takeaway": "A strong fit for calendar sync: they schedule 400+ client sessions a month by hand.",
+  "summary": "Hart & Miller Design is a 60-person design studio that books client workshops across three offices. Scheduling runs through shared inboxes and a spreadsheet, and their careers page lists an operations hire to fix it.",
+  "score": "4",
+  "score_label": "Overall fit",
+  "points_label": "Fit by product",
+  "points": [
+    {
+      "title": "Calendar API",
+      "detail": "Two-way sync would replace the spreadsheet they use to track workshop rooms and facilitators."
+    },
+    {
+      "title": "Scheduler",
+      "detail": "Client-facing booking pages for workshops, with round-robin across facilitators."
+    },
+    {
+      "title": "Email API",
+      "detail": "Lower priority: their client email already lives in a CRM."
+    }
+  ],
+  "say_label": "Say this",
+  "say_this": "You're booking 400 workshops a month across three offices by hand. What would it free up if clients could book a facilitator directly?",
+  "report_url": "https://insights.example.com/projects/q4-prospects/companies/hart-miller",
+  "app_url": "https://insights.example.com"
+}

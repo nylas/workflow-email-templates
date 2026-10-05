@@ -1,0 +1,72 @@
+{
+  "busy": true,
+  "calendar_id": "nyla.hart@example.com",
+  "conferencing": {
+    "provider": "Google Meet",
+    "details": {
+      "url": "https://meet.google.com/xyz-abcd-efg",
+      "meeting_code": "xyz-abcd-efg",
+      "phone": [
+        "+1 415-555-0137"
+      ],
+      "pin": "123456789"
+    }
+  },
+  "created_at": 1791738000,
+  "creator": {
+    "email": "nyla.hart@example.com",
+    "name": "Nyla Hart"
+  },
+  "description": "<p>Agenda: Q4 goals, hiring, and the roadmap review.</p>",
+  "grant_id": "9d1f4c2a-6b8e-4f3d-a7c5-2e9b1d4f6a8c",
+  "hide_participants": false,
+  "html_link": "https://calendar.google.com/calendar/event?eid=N3Azazlt",
+  "ical_uid": "7p3k9m2qv1abcdefghijk@google.com",
+  "id": "7p3k9m2qv1abcdefghijk",
+  "location": "Conference room B",
+  "metadata": {
+    "notify_individually": "true"
+  },
+  "object": "event",
+  "occurrences": null,
+  "organizer": {
+    "email": "nyla.hart@example.com",
+    "name": "Nyla Hart"
+  },
+  "participants": [
+    {
+      "email": "leyah.miller@example.com",
+      "name": "Leyah Miller",
+      "status": "noreply"
+    },
+    {
+      "email": "nyla.hart@example.com",
+      "name": "Nyla Hart",
+      "status": "yes"
+    }
+  ],
+  "read_only": false,
+  "recurrence": [],
+  "reminders": {
+    "overrides": [],
+    "use_default": true
+  },
+  "resources": [],
+  "sequence": 17,
+  "status": "confirmed",
+  "title": "Quarterly planning",
+  "updated_at": 1791738000,
+  "visibility": "default",
+  "when": {
+    "object": "timespan",
+    "start_time": 1791997200,
+    "end_time": 1792000800,
+    "start_timezone": "America/New_York",
+    "end_timezone": "America/New_York"
+  },
+  "recipient": {
+    "email": "leyah.miller@example.com",
+    "first_name": "Leyah",
+    "last_name": "Miller"
+  }
+}

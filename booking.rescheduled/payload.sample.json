@@ -1,0 +1,45 @@
+{
+  "booking_id": "5c8f0a2e-4b7d-4e1a-9c3f-7d2b6a1e0f94",
+  "booking_ref": "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4",
+  "configuration_id": "0f3c7b1a-9e2d-4a5b-8c6f-1d7e9a2b3c4d",
+  "object": "booking",
+  "booking_info": {
+    "event_id": "7p3k9m2qv1abcdefghijk",
+    "start_time": 1791997200,
+    "end_time": 1791999000,
+    "old_start_time": 1791903600,
+    "old_end_time": 1791905400,
+    "participants": [
+      {
+        "email": "leyah.miller@example.com",
+        "name": "Leyah Miller"
+      },
+      {
+        "email": "nyla.hart@example.com",
+        "name": "Nyla Hart"
+      }
+    ],
+    "additional_fields": {
+      "notify_individually": "true",
+      "company": "Hart & Miller Design"
+    },
+    "hide_cancellation_options": false,
+    "hide_rescheduling_options": false,
+    "participant_rescheduling_url": "https://book.example.com/reschedule/a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4",
+    "participant_cancellation_url": "https://book.example.com/cancel/a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4",
+    "host_language": "en",
+    "guest_language": "en",
+    "title": "Product demo with Leyah Miller",
+    "duration": 30,
+    "location": "https://meet.google.com/xyz-abcd-efg",
+    "organizer_timezone": "America/Chicago",
+    "guest_timezone": "America/New_York",
+    "is_group_event": false,
+    "organizer_calendar_id": "primary"
+  },
+  "recipient": {
+    "email": "leyah.miller@example.com",
+    "first_name": "Leyah",
+    "last_name": "Miller"
+  }
+}
